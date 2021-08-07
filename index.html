@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue sample</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        {{ msg }}   <br/>
+        <a v-bind:href="link" v-bind:title="link">Vue.js</a>
+
+        <p v-if="!hide">
+            v-if ẩn hiện
+        </p>
+
+        <h3> Danh sách các loại quả: sử dụng v-for </h3>
+        <ul>
+            <li v-for="item in arrItem">
+                {{ item }}
+            </li>
+        </ul>
+
+        <h3> Xử lí thông tin đầu vào của người dùng </h3>
+        <p>
+            Thời gian hiện tại: {{ time }}
+        </p>
+        <button v-on:click="getCurrentTime"> Giờ hiện tại </button>
+
+        <h3>Two-way binding: Sử dụng v-model</h3>
+        <p> {{ msg }} </p>
+        <input v-model="msg"/>
+
+        <h3>Biên soạn với Component sử dụng: Vue.component</h3>
+        <p>
+            <b> <i>
+                Hệ thống component (phần tử cấu thành) là một khái niệm quan trọng trong Vue, vì nó cho phép chúng ta xây dựng những ứng dụng quy mô lớn 
+                được tạo thành từ những phần tử nhỏ, độc lập, và thường là tái sử dụng được. Nếu bạn để ý, gần như bất kì một loại giao diện ứng dụng 
+                nào cũng có thể được trừu tượng hóa thành một tập hợp dạng cây của các phần tử con
+                Một component trong Vue về bản chất là một đối tượng Vue với các tùy chọn cho trước. Đăng kí một component trong Vue rất đơn giản:
+                // Định nghĩa một component todo-item
+                Vue.component('todo-item', {
+                template: 'abcxyz'
+                })
+            </i></b>
+            <br>
+            Ex: 
+            <todo-item></todo-item>
+        </p>
+
+
+        <br>
+        <p>
+            <b> <i>
+                Chúng ta có thể truyền dữ liệu từ scope (phạm vi) cha vào các component con bằng cách sử dụng một 'prop'
+            </i></b>
+            <br>
+            Ex:
+            <ol>
+                <li-item v-for="item in arrItem" v-bind:name-item="item">
+
+                </li-item>
+            </ol>
+        </p>
+
+
+
+    </div>
+
+
+
+    <script>
+        
+        Vue.component( 'todo-item', {
+            template: '<p>Đây là một đề mục todo-item</p>'
+        });
+
+        Vue.component( 'li-item', {
+            props: ['nameItem'],
+            template: '<li> {{ nameItem }} </li>'
+        });
+
+        var app = new Vue({
+
+            el: '#app',
+            
+            data: {
+                msg: 'Hello Vue.js: ' + new Date().toLocaleDateString(),
+                link: 'https://vuejs.org/',
+                hide: false,
+                arrItem: ['cam', 'xoài', 'chuối', 'táo', 'ngô'],
+                time: new Date().toLocaleTimeString()
+            },
+
+            methods: {
+                getCurrentTime: function () {
+                    this.time = new Date().toLocaleTimeString();
+                }
+            }
+
+        });
+
+
+    </script>
+    
+</body>
+</html>
