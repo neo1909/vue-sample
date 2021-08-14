@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        
+        .static {
+            font-weight: bold;
+            background-color: silver;
+        }
+
+        .active {
+            background-color: mediumseagreen;
+        }
+
+        .text-danger {
+            color: red;
+        }
+
+        .bold-italic {
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .gach-chan {
+            text-decoration: underline;
+        }
+
+
+
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <h1>Class and Style binding</h1>
+    
+        <h2>Binding Class trong html</h2>
+        <h3># Sử dụng cú pháp object</h3>
+        <p class="static" :class="{ active: isActive, 'text-danger': hasError }">
+            Text demo khai bao object trong template
+        </p>
+
+        <p class="static" :class="classObject">
+            Text demo khai bao object trong data
+        </p>
+
+        <h3> # Sử dụng cú pháp mảng</h3>
+        <p class="static" :class="[ activeClass, errorClass ]">
+            Text demo khai bao object trong template
+        </p>
+
+        <h3># Sử dụng với Component</h3>
+        <bold-italic :class="[ activeClass, errorClass, subStyle ]"></bold-italic>
+    </div>
+
+    <script>
+
+        Vue.component('bold-italic', {
+            template: "<p class='bold-italic'> Component 'bold-italic'</p>",
+        });
+            
+        var app = new Vue({
+            
+            el: '#app',
+            data() {
+                return {
+                    isActive: true,
+                    hasError: false,
+
+                    classObject: {
+                        active: false,
+                        'text-danger': true
+                    },
+
+                    activeClass: 'active',
+                    errorClass: 'text-danger',
+                    subStyle: 'gach-chan'
+            
+                }
+            }
+
+        });
+
+
+
+
+    </script>
+    
+</body>
+</html>
