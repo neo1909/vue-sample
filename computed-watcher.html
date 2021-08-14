@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computed property - Watcher in Vue.js</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <h1> {{ title }} </h1>
+
+        <h3> Computed property example:</h3>
+        <h4><u>Ex 1:</u></h4>
+        <p>
+            <b>Before: </b> <br>
+            {{ message }}
+            
+            <br>
+            
+            <b>After: </b> <br>
+            {{ reverseMessage }}
+        </p>
+        
+        <h4><u>Ex 2:</u></h4>
+        <input v-model="text" maxlength="200"> &nbsp; {{ textLength }} / 200
+
+    </div>
+
+
+    <script>
+
+        var app = new Vue({
+
+            el: '#app',
+
+            data: {
+                title: "Computed property - Watcher in Vue.js",
+                message: 'người đông bến đợi thuyền xuôi ngược',
+                text: ''
+            },
+
+            computed: {
+                reverseMessage: function() {
+                    return this.message
+                            .split(" ")
+                            .reverse()
+                            .join(" ");
+                },
+
+                textLength: function() {
+                    return this.text.length;
+                }
+            },
+
+            watch: {
+                text: function(newText, oldText) {
+                    console.log('Data thay đổi từ ' + oldText + ' đến ' + newText);
+                }
+            }
+
+            
+        });
+
+    </script>
+    
+</body>
+</html>
