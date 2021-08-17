@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+        <h1>Form input</h1>
+    
+        <h2>Input Text:</h2>
+        <input type="text" v-model="valText"> <br>
+        Value input: {{ valText }}
+
+        <h2>Checkbox:</h2>
+        <input type="checkbox" name="" id="" v-model="checked" >
+        Value input: {{ checked }}
+        <br>
+
+        <input type="checkbox" name="checkMulti" id="check01" v-model="checkValues" value="Phú"> Phú <br>
+        <input type="checkbox" name="checkMulti" id="check02" v-model="checkValues" value="Xoài"> Xoài <br>
+        <input type="checkbox" name="checkMulti" id="check03" v-model="checkValues" value="Thùy"> Thùy <br>
+        Value input: {{ checkValues }}
+
+        <h2>Radiobutton:</h2>
+        <input type="radio" name="radioNm" id="rd01" v-model="radioVal" value="Cam"> Cam
+        <input type="radio" name="radioNm" id="rd02" v-model="radioVal" value="Xoài"> Xoài
+        Value input: {{ radioVal }}
+        <br>
+
+        <h2>Select</h2>
+        <select name="" id="" v-model="selected">
+            <option value="" disabled> select value ....</option>
+            <option value="Cam" > cam </option>
+            <option value="Xoài" > xoài </option>
+            <option value="Ổi" > ổi </option>
+        </select>
+        {{ selected }}
+        
+
+
+    
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+
+            data() {
+                return {
+                    valText: "Lương Ngọc Phú",
+                    checked: true,
+                    checkValues: [],
+                    radioVal: "Cam",
+                    selected: ""
+                }
+            },
+        });
+    </script>
+
+    
+    
+</body>
+</html>
